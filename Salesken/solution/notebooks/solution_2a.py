@@ -46,7 +46,7 @@ def similatity_matrix(sent_doc):
 # In[28]:
 
 
-def similar_sent_idx(sim_matrix, threshold = 0.75):
+def similar_sent_idx(sim_matrix, threshold = 0.78):
     idx = np.arange(len(sim_matrix))
     seen_idx = []
     sim_idx = [] 
