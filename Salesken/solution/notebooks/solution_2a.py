@@ -52,11 +52,10 @@ def similar_sent_idx(sim_matrix, threshold = 0.75):
     sim_idx = [] 
     for i in range(sim_matrix.shape[0]):
         if i not in seen_idx:
-            isim_idx = idx[sim_matrix[i] >= threshold]
-        
-            if isim_idx.tolist() not in sim_idx:
-                sim_idx.append(isim_idx.tolist())
-            seen_idx.extend(isim_idx.tolist())
+            tmp = [t+i+1 for t in list(np.where( sim_matrix[i][i+1:] > threshold )[0])]
+            seen_idx.extend(tmp)
+            tmp.append(i)
+            sim_idx.append(tmp)
     return sim_idx
 
 
